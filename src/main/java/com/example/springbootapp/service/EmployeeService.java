@@ -19,7 +19,7 @@ public class EmployeeService {
          return list;
     }
 
-    public Employee getEmployeeId(Integer id){
+    public Employee getEmployeeById(Integer id){
         return employeeRepo.findById(id).get();
 
     }
@@ -33,7 +33,7 @@ public class EmployeeService {
     }
     public boolean deleteEmployee(Integer id){
             employeeRepo.deleteById(id);
-            if (getEmployeeId(id) != null){
+            if (employeeRepo.findById(id) != null){
                 return false;
 
             }

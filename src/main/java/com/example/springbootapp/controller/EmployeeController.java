@@ -22,7 +22,7 @@ public class EmployeeController {
 
 
     @GetMapping({"/","/viewEmployees"})
-    public String viewEmployees(String message, Model model){
+    public String viewEmployees(@ModelAttribute("message") String message, Model model){
         List<Employee> employeeList = employeeService.getAllEmployees();
 
         model.addAttribute("empList",employeeList);
@@ -47,7 +47,7 @@ public class EmployeeController {
     }
     @GetMapping("/editEmployee/{id}")
     public String editEmployees(@PathVariable Integer id, String message, Model model){
- Employee employee = employeeService.getEmployeeId(id);
+ Employee employee = employeeService.getEmployeeById(id);
  model.addAttribute("emp",employee);
  model.addAttribute("message",message);
  return "EditEmployee";
